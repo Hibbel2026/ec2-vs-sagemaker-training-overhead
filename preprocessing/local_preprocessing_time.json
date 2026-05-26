@@ -1,0 +1,7 @@
+{
+    "platform": "local_desktop",
+    "variant": "B",
+    "frame_extraction_time_sec": 127.6794,
+    "mediapipe_time_sec": 1009.6194,
+    "total_preprocessing_time_sec": 1137.2988
+}

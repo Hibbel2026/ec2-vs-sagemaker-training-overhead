@@ -1,0 +1,11 @@
+
+flask
+torch
+torchvision
+mediapipe==0.10.13
+opencv-python
+numpy
+requests
+boto3==1.34.46
+sagemaker
+Pillow
