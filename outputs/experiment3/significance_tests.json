@@ -1,0 +1,127 @@
+{
+    "metadata": {
+        "experiment": "Experiment 3 \u2013 multi-model training time comparison",
+        "ec2_instance": "g5.xlarge",
+        "sm_instance": "ml.g5.xlarge",
+        "metric": "train_time_sec",
+        "test": "Welch's independent-samples t-test (two-tailed, equal_var=False)",
+        "alpha": 0.05,
+        "data_sources": {
+            "ec2": "Output/Experiment3_EC2.json",
+            "sm": "Output/Experiment3_SM.json"
+        }
+    },
+    "models": {
+        "mobilenetv3": {
+            "label": "MobileNetV3",
+            "ec2": {
+                "n": 5,
+                "values_sec": [
+                    9296.0124,
+                    9253.5409,
+                    9306.1105,
+                    9364.6589,
+                    9247.1273
+                ],
+                "mean_sec": 9293.49,
+                "std_sec": 47.3711
+            },
+            "sagemaker": {
+                "n": 5,
+                "values_sec": [
+                    13011.1613,
+                    12967.4744,
+                    12945.3638,
+                    12931.077,
+                    12840.3735
+                ],
+                "mean_sec": 12939.09,
+                "std_sec": 62.9453
+            },
+            "comparison": {
+                "abs_diff_sec": -3645.6,
+                "rel_diff_pct": -28.1751
+            },
+            "welch_t_test": {
+                "t_statistic": -103.476889,
+                "p_value": 0.0,
+                "degrees_of_freedom": 7.4305,
+                "significant": true
+            }
+        },
+        "resnet50": {
+            "label": "ResNet50",
+            "ec2": {
+                "n": 5,
+                "values_sec": [
+                    9723.7841,
+                    9769.6254,
+                    9858.7022,
+                    9700.0523,
+                    9676.9861
+                ],
+                "mean_sec": 9745.83,
+                "std_sec": 71.8113
+            },
+            "sagemaker": {
+                "n": 5,
+                "values_sec": [
+                    12936.2672,
+                    12786.3166,
+                    12990.2151,
+                    12742.889,
+                    12918.2621
+                ],
+                "mean_sec": 12874.79,
+                "std_sec": 105.14
+            },
+            "comparison": {
+                "abs_diff_sec": -3128.96,
+                "rel_diff_pct": -24.303
+            },
+            "welch_t_test": {
+                "t_statistic": -54.951106,
+                "p_value": 0.0,
+                "degrees_of_freedom": 7.065,
+                "significant": true
+            }
+        },
+        "resnet101": {
+            "label": "ResNet101",
+            "ec2": {
+                "n": 5,
+                "values_sec": [
+                    10189.1949,
+                    10278.5399,
+                    10297.3804,
+                    10197.0047,
+                    10287.4802
+                ],
+                "mean_sec": 10249.92,
+                "std_sec": 52.3687
+            },
+            "sagemaker": {
+                "n": 5,
+                "values_sec": [
+                    10644.0427,
+                    10661.139,
+                    10705.1238,
+                    10702.6605,
+                    10497.884
+                ],
+                "mean_sec": 10642.17,
+                "std_sec": 84.8588
+            },
+            "comparison": {
+                "abs_diff_sec": -392.25,
+                "rel_diff_pct": -3.6858
+            },
+            "welch_t_test": {
+                "t_statistic": -8.795861,
+                "p_value": 6.625e-05,
+                "degrees_of_freedom": 6.6608,
+                "significant": true
+            }
+        }
+    }
+}

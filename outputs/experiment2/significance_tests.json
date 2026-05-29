@@ -1,0 +1,308 @@
+{
+    "metadata": {
+        "experiment": "Experiment 2 \u2013 ResNet50 training overhead",
+        "ec2_instance": "g5.xlarge",
+        "sm_instance": "ml.g5.xlarge",
+        "ec2_n_runs": 5,
+        "sm_n_runs": 5,
+        "alpha": 0.05,
+        "practical_significance_threshold_pct_epoch": 1.0,
+        "practical_significance_threshold_sec": 1.131584,
+        "ec2_wall_clock_mean_sec": 113.1584,
+        "data_sources": {
+            "ec2": "Output/Experiment2-EC2.json",
+            "sm": "Output/Experiment2_SM.json"
+        },
+        "notes": "Both platforms use identical hardware (g5.xlarge GPU), batch size 4, 70 epochs."
+    },
+    "components": {
+        "avg_data_loading_sec": {
+            "label": "Data Loading",
+            "ec2": {
+                "values_sec": [
+                    51.2001,
+                    53.174,
+                    52.2904,
+                    50.9439,
+                    52.0456
+                ],
+                "mean_sec": 51.9308,
+                "std_sec": 0.893858
+            },
+            "sagemaker": {
+                "values_sec": [
+                    88.0484,
+                    88.4202,
+                    90.5971,
+                    89.5737,
+                    86.5521
+                ],
+                "mean_sec": 88.6383,
+                "std_sec": 1.537827
+            },
+            "comparison": {
+                "abs_diff_sec": -36.7075,
+                "abs_diff_ms": -36707.5,
+                "rel_diff_pct": -41.4127,
+                "share_of_epoch_pct": 32.439,
+                "cohens_d": -29.184935
+            },
+            "welch_t_test": {
+                "t_statistic": -46.145435,
+                "p_value": 0.0,
+                "degrees_of_freedom": 6.4259,
+                "significant": true
+            },
+            "mann_whitney_u_test": {
+                "u_statistic": 0.0,
+                "p_value": 0.00793651,
+                "significant": true
+            },
+            "overall": {
+                "statistically_significant_both_tests": true,
+                "practically_significant": true,
+                "significance_label": "PRACTICALLY SIGNIFICANT"
+            }
+        },
+        "avg_forward_pass_sec": {
+            "label": "Forward Pass",
+            "ec2": {
+                "values_sec": [
+                    19.7466,
+                    19.7466,
+                    19.7521,
+                    19.7353,
+                    19.7368
+                ],
+                "mean_sec": 19.74348,
+                "std_sec": 0.007164
+            },
+            "sagemaker": {
+                "values_sec": [
+                    19.8041,
+                    19.7977,
+                    19.795,
+                    19.8067,
+                    19.8105
+                ],
+                "mean_sec": 19.8028,
+                "std_sec": 0.006384
+            },
+            "comparison": {
+                "abs_diff_sec": -0.05932,
+                "abs_diff_ms": -59.32,
+                "rel_diff_pct": -0.2996,
+                "share_of_epoch_pct": 0.0524,
+                "cohens_d": -8.742124
+            },
+            "welch_t_test": {
+                "t_statistic": -13.822512,
+                "p_value": 8.2e-07,
+                "degrees_of_freedom": 7.896,
+                "significant": true
+            },
+            "mann_whitney_u_test": {
+                "u_statistic": 0.0,
+                "p_value": 0.01192523,
+                "significant": true
+            },
+            "overall": {
+                "statistically_significant_both_tests": true,
+                "practically_significant": false,
+                "significance_label": "practically negligible"
+            }
+        },
+        "avg_backward_pass_sec": {
+            "label": "Backward Pass",
+            "ec2": {
+                "values_sec": [
+                    36.8017,
+                    36.7862,
+                    36.832,
+                    36.7898,
+                    36.7724
+                ],
+                "mean_sec": 36.79642,
+                "std_sec": 0.022467
+            },
+            "sagemaker": {
+                "values_sec": [
+                    35.9353,
+                    35.8961,
+                    35.9078,
+                    35.922,
+                    35.9362
+                ],
+                "mean_sec": 35.91948,
+                "std_sec": 0.017459
+            },
+            "comparison": {
+                "abs_diff_sec": 0.87694,
+                "abs_diff_ms": 876.94,
+                "rel_diff_pct": 2.4414,
+                "share_of_epoch_pct": 0.775,
+                "cohens_d": 43.587097
+            },
+            "welch_t_test": {
+                "t_statistic": 68.917251,
+                "p_value": 0.0,
+                "degrees_of_freedom": 7.54,
+                "significant": true
+            },
+            "mann_whitney_u_test": {
+                "u_statistic": 25.0,
+                "p_value": 0.00793651,
+                "significant": true
+            },
+            "overall": {
+                "statistically_significant_both_tests": true,
+                "practically_significant": false,
+                "significance_label": "practically negligible"
+            }
+        },
+        "avg_optimizer_step_sec": {
+            "label": "Optimizer Step",
+            "ec2": {
+                "values_sec": [
+                    4.0664,
+                    4.0296,
+                    4.0359,
+                    4.0035,
+                    4.0226
+                ],
+                "mean_sec": 4.0316,
+                "std_sec": 0.022935
+            },
+            "sagemaker": {
+                "values_sec": [
+                    4.4558,
+                    4.4596,
+                    4.4475,
+                    4.4463,
+                    4.4728
+                ],
+                "mean_sec": 4.4564,
+                "std_sec": 0.010733
+            },
+            "comparison": {
+                "abs_diff_sec": -0.4248,
+                "abs_diff_ms": -424.8,
+                "rel_diff_pct": -9.5324,
+                "share_of_epoch_pct": 0.3754,
+                "cohens_d": -23.724255
+            },
+            "welch_t_test": {
+                "t_statistic": -37.511341,
+                "p_value": 5e-08,
+                "degrees_of_freedom": 5.6717,
+                "significant": true
+            },
+            "mann_whitney_u_test": {
+                "u_statistic": 0.0,
+                "p_value": 0.00793651,
+                "significant": true
+            },
+            "overall": {
+                "statistically_significant_both_tests": true,
+                "practically_significant": false,
+                "significance_label": "practically negligible"
+            }
+        },
+        "avg_platform_overhead_sec": {
+            "label": "Platform Overhead",
+            "ec2": {
+                "values_sec": [
+                    0.6721,
+                    0.6243,
+                    0.6821,
+                    0.6452,
+                    0.6568
+                ],
+                "mean_sec": 0.6561,
+                "std_sec": 0.022708
+            },
+            "sagemaker": {
+                "values_sec": [
+                    0.5489,
+                    0.5275,
+                    0.5436,
+                    0.534,
+                    0.5189
+                ],
+                "mean_sec": 0.53458,
+                "std_sec": 0.01207
+            },
+            "comparison": {
+                "abs_diff_sec": 0.12152,
+                "abs_diff_ms": 121.52,
+                "rel_diff_pct": 22.7319,
+                "share_of_epoch_pct": 0.1074,
+                "cohens_d": 6.682766
+            },
+            "welch_t_test": {
+                "t_statistic": 10.566381,
+                "p_value": 3.821e-05,
+                "degrees_of_freedom": 6.0932,
+                "significant": true
+            },
+            "mann_whitney_u_test": {
+                "u_statistic": 25.0,
+                "p_value": 0.00793651,
+                "significant": true
+            },
+            "overall": {
+                "statistically_significant_both_tests": true,
+                "practically_significant": false,
+                "significance_label": "practically negligible"
+            }
+        },
+        "avg_epoch_wall_clock_sec": {
+            "label": "Epoch Wall-Clock",
+            "ec2": {
+                "values_sec": [
+                    112.4869,
+                    114.3607,
+                    113.5925,
+                    112.1177,
+                    113.2342
+                ],
+                "mean_sec": 113.1584,
+                "std_sec": 0.890742
+            },
+            "sagemaker": {
+                "values_sec": [
+                    148.7925,
+                    149.1011,
+                    151.291,
+                    150.2827,
+                    147.2905
+                ],
+                "mean_sec": 149.35156,
+                "std_sec": 1.52083
+            },
+            "comparison": {
+                "abs_diff_sec": -36.19316,
+                "abs_diff_ms": -36193.16,
+                "rel_diff_pct": -24.2335,
+                "share_of_epoch_pct": 31.9845,
+                "cohens_d": -29.041342
+            },
+            "welch_t_test": {
+                "t_statistic": -45.918394,
+                "p_value": 0.0,
+                "degrees_of_freedom": 6.4554,
+                "significant": true
+            },
+            "mann_whitney_u_test": {
+                "u_statistic": 0.0,
+                "p_value": 0.00793651,
+                "significant": true
+            },
+            "overall": {
+                "statistically_significant_both_tests": true,
+                "practically_significant": true,
+                "significance_label": "PRACTICALLY SIGNIFICANT"
+            }
+        }
+    }
+}
